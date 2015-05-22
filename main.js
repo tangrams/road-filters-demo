@@ -25,13 +25,13 @@ map = (function () {
         map_start_location = map_start_location.map(Number);
     }
     if (url_hash.length == 4) {
-        searchtext = url_hash[3];
+        searchtext = unescape(url_hash[3]);
     }
 
     // Put current state on URL
     function updateURL () {
         var map_latlng = map.getCenter();
-        var url_options = [map.getZoom().toFixed(1), map_latlng.lat.toFixed(4), map_latlng.lng.toFixed(4), searchtext];
+        var url_options = [map.getZoom().toFixed(1), map_latlng.lat.toFixed(4), map_latlng.lng.toFixed(4), escape(searchtext)];
         window.location.hash = url_options.join('/');
     }
 
