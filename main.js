@@ -1,7 +1,7 @@
 /*jslint browser: true*/
 /*global Tangram, gui */
 
-(function () {
+map = (function () {
 
     // Get location from URL
     var locations = {
@@ -17,13 +17,28 @@
     // leaflet-style URL hash pattern:
     // #[zoom],[lat],[lng]
     var url_hash = window.location.hash.slice(1, window.location.hash.length).split('/');
+    var searchtext = "";
 
-    if (url_hash.length == 3) {
+    if (url_hash.length >= 3) {
         map_start_location = [url_hash[1],url_hash[2], url_hash[0]];
         // convert from strings
         map_start_location = map_start_location.map(Number);
     }
+    if (url_hash.length == 4) {
+        searchtext = url_hash[3];
+    }
 
+    // Put current state on URL
+    function updateURL () {
+        var map_latlng = map.getCenter();
+        var url_options = [map.getZoom().toFixed(1), map_latlng.lat.toFixed(4), map_latlng.lng.toFixed(4), searchtext];
+        window.location.hash = url_options.join('/');
+    }
+
+    function updateHash () {
+        newhash = hash.lastHash + "/"+scene.config.layers["roads"].properties.filter_text;
+        if (window.location != newhash) window.location = newhash
+    }
     /*** Map ***/
 
     var map = L.map('map', {
@@ -42,8 +57,9 @@
     window.scene = scene;
 
     map.setView(map_start_location.slice(0, 2), map_start_location[2]);
+    map.on('moveend', updateURL);
 
-    var hash = new L.Hash(map);
+    // var hash = new L.Hash(map);
 
     // Create dat GUI
     var gui = new dat.GUI({ autoPlace: true, width: 350 });
@@ -52,31 +68,38 @@
         gui.domElement.parentNode.style.zIndex = 5; // make sure GUI is on top of map
         window.gui = gui;
 
-        gui.input = "";
+        gui.input = searchtext;
         var input = gui.add(gui, 'input').name("search");
-        input.onChange(function(value) {
+        function updateFilter(value) {
+            searchtext = value;
             if (value == "") value = "willdefinitelynotmatch";
             scene.config.layers["roads"].properties.filter_text = value;
             scene.rebuildGeometry();
             scene.requestRedraw();
+            updateURL();            
+        }
+        updateFilter(searchtext);
+        input.onChange(function(value) {
+            updateFilter(value);
         });
-        console.log(input);
         //select input text when you click on it
         input.domElement.id = "filterbox";
         input.domElement.onclick = function() { this.getElementsByTagName('input')[0].select(); };
 
-
     }
-
     // Add map
     window.addEventListener('load', function () {
         // Scene initialized
         layer.on('init', function() {
             addGUI();
             var filterbox = document.getElementById('filterbox').getElementsByTagName('input')[0];
-            filterbox.focus();
+            console.log(filterbox.value.length);
+            if (filterbox.value.length == 0) filterbox.focus();
+            else filterbox.select();
         });
         layer.addTo(map);
     });
+
+    return map;
 
 }());
