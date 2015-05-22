@@ -88,6 +88,7 @@
     <script src="lib/locator/findcity.js"></script>
 
     <style>
+    @media (min-width: 600px) {
         /* enlarge dat.gui */
         .dg {
             font-size: 12pt;
@@ -103,6 +104,18 @@
             font-size: 12pt;
             height: 24px;   
         }
+    }
+    @media (max-width: 599px) {
+        /*shrink dat.gui*/
+        .dg.main {
+            font-size: 10pt;
+            margin-top: 50px;
+            width: 200px !important;
+        }
+        .dg.main .close-button {
+            width: 200px !important;
+        }
+    }
     </style>
 
   </body>
