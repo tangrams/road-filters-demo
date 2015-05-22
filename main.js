@@ -62,7 +62,7 @@ map = (function () {
     // var hash = new L.Hash(map);
 
     // Create dat GUI
-    var gui = new dat.GUI({ autoPlace: true, width: 350 });
+    var gui = new dat.GUI({ autoPlace: true, hideable: false, width: 350 });
     function addGUI () {
 
         gui.domElement.parentNode.style.zIndex = 5; // make sure GUI is on top of map
