@@ -69,7 +69,7 @@ map = (function () {
         window.gui = gui;
 
         gui.input = searchtext;
-        var input = gui.add(gui, 'input').name("search");
+        var input = gui.add(gui, 'input').name("filter");
         function updateFilter(value) {
             searchtext = value;
             if (value == "") value = "willdefinitelynotmatch";
