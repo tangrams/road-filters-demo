@@ -27,11 +27,27 @@
             width: 100%;
             position: absolute;
         }
+
+        #ui-locator {
+            display: none;
+        }
     </style>
   </head>
 
   <body>
     <div id="map"></div>
+    <div id="ui-locator">
+        <div id="citylocator">
+            <div class="citylocate-input-container">
+                <select class="js-citylocate-select2">
+                    <option disabled selected>Search</option>
+                </select>
+            </div>
+        </div>
+        <div id="geolocator">
+            <div class="geolocate-button" title="Get current location"><span class="geolocate-icon"></span></div>
+        </div>
+    </div>
 
     <!-- Start of 3rd party libraries -->
     <script src="lib/leaflet/leaflet.js"></script>
@@ -63,6 +79,13 @@
       repo: 'https://github.com/tangrams/filters-demo/'
     });
     </script>
+
+
+    <!-- Locator js -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+    <script src="lib/locator/geolocate.js"></script>
+    <script src="lib/locator/findcity.js"></script>
 
     <style>
         /* enlarge dat.gui */
