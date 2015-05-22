@@ -93,7 +93,6 @@ map = (function () {
         layer.on('init', function() {
             addGUI();
             var filterbox = document.getElementById('filterbox').getElementsByTagName('input')[0];
-            console.log(filterbox.value.length);
             if (filterbox.value.length == 0) filterbox.focus();
             else filterbox.select();
         });
