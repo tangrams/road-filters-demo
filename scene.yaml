@@ -43,7 +43,8 @@ layers:
     roads:
         data: { source: osm }
         properties: 
-            filter_text: "willdefinitelynomatch"
+            filter_text: ""
+        filter: { not: { kind: rail } }
         draw:
             lines:
                 order: 2
