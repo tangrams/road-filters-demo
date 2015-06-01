@@ -1,12 +1,10 @@
 # road-filters-demo
 
-** *This style is under development.* **
-
 A demo showing ways of filtering data with the stylesheet in [Tangram](http://github.com/tangrams/tangram).
 
 Live demo: http://tangrams.github.io/road-filters-demo/
 
-![tangram-demo screenshot](https://cloud.githubusercontent.com/assets/459970/6629470/c007b1de-c8e4-11e4-854e-fd69f5135b3a.png)
+![tangram-demo screenshot](https://cloud.githubusercontent.com/assets/459970/7921009/85ecfd30-0870-11e5-9206-514f966a26a6.png)
 
 ### To run locally:
 
