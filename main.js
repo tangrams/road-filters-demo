@@ -49,7 +49,7 @@ map = (function () {
     });
     var layer = Tangram.leafletLayer({
         scene: 'scene.yaml',
-        attribution: '<a href="https://mapzen.com/tangram" target="_blank">Tangram</a> | &copy; OSM contributors | <a href="https://mapzen.com/" target="_blank">Mapzen</a>',
+        attribution: '<a href="https://mapzen.com/tangram" target="_blank">Tangram</a> | &copy; OSM contributors | <a href="https://mapzen.com/" target="_blank">Mapzen</a>'
     });
 
     window.layer = layer;
@@ -65,7 +65,7 @@ map = (function () {
     var gui = new dat.GUI({ autoPlace: true, hideable: false, width: 300 });
     function addGUI () {
 
-        gui.domElement.parentNode.style.zIndex = 5; // make sure GUI is on top of map
+        gui.domElement.parentNode.style.zIndex = 500; // make sure GUI is on top of map
         window.gui = gui;
 
         gui.input = searchtext;
