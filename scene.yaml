@@ -23,21 +23,21 @@ layers:
         data: { source: osm }
         draw:
             polygons:
-                order: 0
+                order: function() { return feature.sort_key; }
                 color: [.5, .5, .5]
 
     landuse:
         data: { source: osm }
         draw:
             polygons:
-                order: 1
+                order: function() { return feature.sort_key; }
                 color: [.6, .6, .6]
 
     water:
         data: { source: osm }
         draw:
             polygons:
-                order: 2
+                order: function() { return feature.sort_key; }
                 color: [.4, .4, .4]
 
     roads:
@@ -47,7 +47,7 @@ layers:
         filter: { not: { kind: rail } }
         draw:
             lines:
-                order: 2
+                order: function() { return feature.sort_key; }
                 color: [1, 1, 1]
                 width: 3
         red-roads:
@@ -57,11 +57,10 @@ layers:
                 }
             draw:
                 lines:
-                    order: 3
                     color: red
                     width: 3px
                 text:
-                    order: 6
+                    order: function() { return feature.sort_key; }
                     text_source: name
                     font:
                         weight: bold
