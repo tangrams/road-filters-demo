@@ -67,8 +67,7 @@ map = (function () {
             searchtext = value;
             if (value == "") value = "willdefinitelynotmatch";
             scene.config.layers["roads"].properties.filter_text = value;
-            scene.rebuildGeometry();
-            scene.requestRedraw();
+            scene.rebuild();
             updateURL();            
         }
         updateFilter(searchtext);
