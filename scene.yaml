@@ -1,4 +1,4 @@
-globals:
+global:
     filter_text: ""
 
 sources:
@@ -40,7 +40,7 @@ layers:
         red-roads:
             filter: |
                 function () {
-                    return feature.name && feature.name.toLowerCase().indexOf(globals.filter_text.toLowerCase()) > -1;
+                    return feature.name && feature.name.toLowerCase().indexOf(global.filter_text.toLowerCase()) > -1;
                 }
             draw:
                 lines:
