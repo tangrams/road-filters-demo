@@ -40,7 +40,9 @@ layers:
         red-roads:
             filter: |
                 function () {
-                    return feature.name && feature.name.toLowerCase().indexOf(global.filter_text.toLowerCase()) > -1;
+                    return global.filter_text && 
+                        feature.name && 
+                        feature.name.toLowerCase().indexOf(global.filter_text.toLowerCase()) > -1;
                 }
             draw:
                 lines:
