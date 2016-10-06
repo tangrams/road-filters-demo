@@ -29,7 +29,7 @@ map = (function () {
     }
 
     function updateHash () {
-        newhash = hash.lastHash + "/"+scene.config.layers["roads"].properties.filter_text;
+        newhash = hash.lastHash + "/"+scene.config.global.filter_text;
         if (window.location != newhash) window.location = newhash
     }
     /*** Map ***/
@@ -65,8 +65,7 @@ map = (function () {
         var input = gui.add(gui, 'input').name("filter");
         function updateFilter(value) {
             searchtext = value;
-            if (value == "") value = "willdefinitelynotmatch";
-            scene.config.layers["roads"].properties.filter_text = value;
+            scene.config.global.filter_text = searchtext;
             scene.rebuild();
             updateURL();            
         }
