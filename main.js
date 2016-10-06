@@ -64,9 +64,9 @@ map = (function () {
         gui.input = searchtext;
         var input = gui.add(gui, 'input').name("filter");
         function updateFilter(value) {
-            if (value == "") value = null;
             searchtext = value;
-            scene.config.global.filter_text = searchtext;
+            if (value == "") value = null;
+            scene.config.global.filter_text = value;
             scene.rebuild();
             updateURL();            
         }
