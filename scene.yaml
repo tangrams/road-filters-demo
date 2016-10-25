@@ -4,7 +4,7 @@ global:
 sources:
     mapzen:
         type: TopoJSON
-        url: https://vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-HqUVidw
+        url: https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson?api_key=mapzen-QF1osLn
         max_zoom: 16
 
 layers:
@@ -12,21 +12,21 @@ layers:
         data: { source: mapzen }
         draw:
             polygons:
-                order: function() { return feature.sort_key; }
+                order: function() { return feature.sort_rank; }
                 color: [.5, .5, .5]
 
     landuse:
         data: { source: mapzen }
         draw:
             polygons:
-                order: function() { return feature.sort_key; }
+                order: function() { return feature.sort_rank; }
                 color: [.6, .6, .6]
 
     water:
         data: { source: mapzen }
         draw:
             polygons:
-                order: function() { return feature.sort_key; }
+                order: function() { return feature.sort_rank; }
                 color: [.4, .4, .4]
 
     roads:
@@ -34,7 +34,7 @@ layers:
         filter: { not: { kind: rail } }
         draw:
             lines:
-                order: function() { return feature.sort_key; }
+                order: function() { return feature.sort_rank; }
                 color: [1, 1, 1]
                 width: 3
         red-roads:
@@ -49,7 +49,7 @@ layers:
                     color: red
                     width: 3px
                 text:
-                    order: function() { return feature.sort_key; }
+                    order: function() { return feature.sort_rank; }
                     text_source: name
                     font:
                         weight: bold
